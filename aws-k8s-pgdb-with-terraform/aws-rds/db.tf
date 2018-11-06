@@ -1,3 +1,4 @@
+# WARNING - the subnet IDs should be matched to your EKS k8s ids.
 resource "aws_db_subnet_group" "dbsub" {
   name       = "main"
   subnet_ids = ["subnet-0db4edb1085a4ba22","subnet-05ed91388c9d676d7"]
@@ -7,6 +8,8 @@ resource "aws_db_subnet_group" "dbsub" {
   }
 }
 
+# WARNING - a couple of magic strings sg ids and db name - read in via a variables preferably.
+# the vpc_security_group_ids are from the EKS k8s setup.
 resource "aws_db_instance" "default" {
   allocated_storage    = 10
   storage_type         = "gp2"
