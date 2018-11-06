@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: envconfig
+  namespace: development
+data:
+  DB_NAME: "db.sqlite3"
+  DB_HOST: "NA"
+  RUN_IN_PRODUCTION: "False"
+      

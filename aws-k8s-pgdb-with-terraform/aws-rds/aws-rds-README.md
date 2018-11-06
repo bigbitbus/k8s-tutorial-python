@@ -1,0 +1,1 @@
+Terraform scripts to create a minimal Postgres RDS database for the tutorial. Needs environment variables for some secrets, as noted in the variables.tf file.

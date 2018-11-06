@@ -1,0 +1,1 @@
+The simple [Django poll app](https://docs.djangoproject.com/en/2.1/intro/tutorial01/) example used in the Django beginner tuorial. Adapted graciously from [here](https://github.com/divio/django-polls).

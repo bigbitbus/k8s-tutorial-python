@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-deployment
+  labels:
+    app: django
+  namespace: production
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: django
+  template:
+    metadata:
+      labels:
+        app: django
+    spec:
+      containers:
+      - name: django
+        image: kubernetes101/django_image:a52d888
+        ports:
+        - containerPort: 8000
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "200m"
+          limits:
+            memory: "128Mi"
+            cpu: "400m"
+        envFrom:
+          - configMapRef:
+              name: envconfig
+        env:
+          - name: DB_USER
+            valueFrom:
+              secretKeyRef:
+                name: db-user-pass
+                key: dbusername.txt
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: db-user-pass
+                key: dbsecret.txt
+          - name: AWS_STORAGE_BUCKET_NAME
+            valueFrom:
+              secretKeyRef:
+                name: s3-secrets
+                key: s3bucket.txt
+          - name: AWS_ACCESS_KEY_ID
+            valueFrom:
+              secretKeyRef:
+                name: s3-secrets
+                key: s3accesskey.txt
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: s3-secrets
+                key: s3secretkey.txt
