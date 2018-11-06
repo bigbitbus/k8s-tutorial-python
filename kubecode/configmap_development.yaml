@@ -1,3 +1,4 @@
+# These provide us a way of injecting environment variables into the pods
 apiVersion: v1
 kind: ConfigMap
 metadata:

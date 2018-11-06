@@ -5,6 +5,9 @@ metadata:
 spec:
   selector:
     app: django
+  # the loadbalancer type exposes the service outside k8s via a AWS ELB for example.
+  # so, it makes it reachable from clients.
+  # Different k8s providers have different LB implementations
   type: LoadBalancer
   ports:
   - protocol: TCP

@@ -4,8 +4,10 @@ metadata:
   name: django-deployment
   labels:
     app: django
+  # A namespace is a virtual k8s cluster
   namespace: production
 spec:
+  # Number of pods in the deployment's replica set
   replicas: 2
   selector:
     matchLabels:
@@ -17,9 +19,11 @@ spec:
     spec:
       containers:
       - name: django
+        # Notice the tag is also included in the image
         image: kubernetes101/django_image:a52d888
         ports:
         - containerPort: 8000
+        # Minimum and maximum resources allocated to the container.
         resources:
           requests:
             memory: "64Mi"
@@ -27,32 +31,43 @@ spec:
           limits:
             memory: "128Mi"
             cpu: "400m"
+        # Add envconfigmap configmap variables to the environment
         envFrom:
           - configMapRef:
               name: envconfig
         env:
+          # DB_USER, DB_HOST and DB_PASSWORD are defined in a secret called "db-user-pass".
+          # These hold the database access information that is injected as environment variables
+          # into the django pod
           - name: DB_USER
             valueFrom:
               secretKeyRef:
                 name: db-user-pass
-                key: dbusername.txt
+                key: dbusername.sec
+          - name: DB_HOST
+            valueFrom:
+              secretKeyRef:
+                name: db-user-pass
+                key: dbhost.sec
           - name: DB_PASSWORD
             valueFrom:
               secretKeyRef:
                 name: db-user-pass
-                key: dbsecret.txt
+                key: dbsecret.sec
+          # The AWS credentials are needed for Django to put static files into an S3 bucket for the
+          # production deployment. Used by django-storages
           - name: AWS_STORAGE_BUCKET_NAME
             valueFrom:
               secretKeyRef:
                 name: s3-secrets
-                key: s3bucket.txt
+                key: s3bucket.sec
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
               secretKeyRef:
                 name: s3-secrets
-                key: s3accesskey.txt
+                key: s3accesskey.sec
           - name: AWS_SECRET_ACCESS_KEY
             valueFrom:
               secretKeyRef:
                 name: s3-secrets
-                key: s3secretkey.txt
+                key: s3secretkey.sec

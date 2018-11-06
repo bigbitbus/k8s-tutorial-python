@@ -4,8 +4,10 @@ metadata:
   name: django-deployment
   labels:
     app: django
+  # A namespace is a virtual k8s cluster
   namespace: development
 spec:
+  # number of pods in the replicaset
   replicas: 1
   selector:
     matchLabels:
@@ -17,9 +19,11 @@ spec:
     spec:
       containers:
       - name: django
+        # Notice how the tag is also included in the image
         image: kubernetes101/django_image:b8f8669
         ports:
         - containerPort: 8000
+        # Minimum and maximum resources allocated to the container.
         resources:
           requests:
             memory: "64Mi"

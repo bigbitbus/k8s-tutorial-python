@@ -22,6 +22,7 @@ Here are links to key resources in this repository
 * [Minikube installation instructions](https://kubernetes.io/docs/tasks/tools/install-minikube/) 
 * [Docker setup and commands](django-poll-project/poll-app-README.md) to interact with minikube
 * [Amazon AWS EKS k8s setup](aws-k8s-pgdb-with-terraform/aws-kubernetes/aws-k8s-README.md) - you will need an AWS account (credit card required).
+* [Using the k8s cluster](kubecode/kubectl-code-README.md) This is the meat of the tutorial - things to do with the k8s cluster.
 * [Amazon AWS RDS setup](aws-k8s-pgdb-with-terraform/aws-kubernetes/aws-k8s-README.md)  to create a simple postgres database instance - you will need an AWS account (credit card required). We separated the terraform scripts for EKS and RDS setup because you probably don't want to create and tear down your production database and EKS cluster at the same time!
 
 
