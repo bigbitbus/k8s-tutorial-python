@@ -6,7 +6,6 @@ metadata:
   namespace: development
 data:
   POSTGRES_DB: "kubetutorial101"
-  DB_HOST: "dbhost"
   POSTGRES_USER: "postgres"
   RUN_IN_PRODUCTION: "False"
 

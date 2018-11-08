@@ -2,10 +2,11 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: envconfig
+  name: postgres-config
   namespace: production
 data:
-  DB_NAME: "kubernetes101db"
+  POSTGRES_DB: "kubernetes101db"
+  POSTGRES_USER: "kubetutorial101"
   RUN_IN_PRODUCTION: "True"
   AWS_S3_REGION_NAME: "us-west-2"
 
