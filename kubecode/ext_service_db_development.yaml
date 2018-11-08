@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pghost
+  namespace: development
+spec:
+  type: ExternalName
+  externalName: postgres
+

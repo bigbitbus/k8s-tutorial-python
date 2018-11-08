@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pghost
+  namespace: production
+spec:
+  type: ExternalName
+  externalName: terraform-20181102201911881300000001.ctrkthnoul1u.us-west-2.rds.amazonaws.com
+

@@ -95,27 +95,26 @@ STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-if os.environ["RUN_IN_PRODUCTION"] == "False":
+#if os.environ["RUN_IN_PRODUCTION"] == "False":
     #Sqlite for development
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, os.environ["DB_NAME"]),
-        }
-    }
-else:
+#    DATABASES = {
+#        'default': {
+#            'ENGINE': 'django.db.backends.sqlite3',
+#            'NAME': os.path.join(BASE_DIR, os.environ["DB_NAME"]),
+#        }
+#    }
+#else:
     # Postgresql for production
-    DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ["DB_NAME"],
-        'USER': os.environ["DB_USER"],
-        'PASSWORD': os.environ["DB_PASSWORD"],
-        'HOST': os.environ["DB_HOST"],
+        'NAME': os.environ["POSTGRES_DB"],
+        'USER': os.environ["POSTGRES_USER"],
+        'PASSWORD': os.environ["POSTGRES_PASSWORD"],
+        'HOST': 'pghost',
         'PORT': '5432',
     }
 }
-    
 
 # log to stdout for Docker
 import sys

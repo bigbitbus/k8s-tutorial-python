@@ -2,10 +2,13 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: envconfig
+  name: postgres-config
   namespace: development
 data:
-  DB_NAME: "db.sqlite3"
-  DB_HOST: "NA"
+  POSTGRES_DB: "kubetutorial101"
+  DB_HOST: "dbhost"
+  POSTGRES_USER: "postgres"
   RUN_IN_PRODUCTION: "False"
+
+
       

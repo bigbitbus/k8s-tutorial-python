@@ -4,8 +4,6 @@ metadata:
   name: django-deployment
   labels:
     app: django
-  # A namespace is a virtual k8s cluster
-  namespace: production
 spec:
   # Number of pods in the deployment's replica set
   replicas: 2
@@ -34,40 +32,30 @@ spec:
         # Add envconfigmap configmap variables to the environment
         envFrom:
           - configMapRef:
-              name: envconfig
+              name: postgres-config
         env:
-          # DB_USER, DB_HOST and DB_PASSWORD are defined in a secret called "db-user-pass".
+          # POSTGRES_PASSWORD are defined in a secret called "db-password".
           # These hold the database access information that is injected as environment variables
           # into the django pod
-          - name: DB_USER
-            valueFrom:
-              secretKeyRef:
-                name: db-user-pass
-                key: dbusername.sec
-          - name: DB_HOST
-            valueFrom:
-              secretKeyRef:
-                name: db-user-pass
-                key: dbhost.sec
           - name: POSTGRES_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: db-user-pass
-                key: dbsecret.sec
+                name: db-password
+                key: db-password
           # The AWS credentials are needed for Django to put static files into an S3 bucket for the
           # production deployment. Used by django-storages
           - name: AWS_STORAGE_BUCKET_NAME
             valueFrom:
               secretKeyRef:
                 name: s3-secrets
-                key: s3bucket.sec
+                key: s3bucket
           - name: AWS_ACCESS_KEY_ID
             valueFrom:
               secretKeyRef:
                 name: s3-secrets
-                key: s3accesskey.sec
+                key: s3accesskey
           - name: AWS_SECRET_ACCESS_KEY
             valueFrom:
               secretKeyRef:
                 name: s3-secrets
-                key: s3secretkey.sec
+                key: s3secretkey

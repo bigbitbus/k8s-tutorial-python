@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+  labels:
+    app: postgres
+  # A namespace is a virtual k8s cluster
+  namespace: development
+spec:
+  # number of pods in the replicaset
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+      - name: postgres
+        # Notice how the tag is also included in the image
+        image: postgres
+        ports:
+        - containerPort: 5432
+        # Minimum and maximum resources allocated to the container.
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "500m"
+          limits:
+            memory: "512Mi"
+            cpu: "1000m"
+        envFrom:
+          - configMapRef:
+              name: postgres-config
+        env:
+          # POSTGRES_PASSWORD is defined in a secret called "db-password".
+          # These hold the database access information that is injected as environment variables
+          # into the postgres pod
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: db-password
+                key: db-password
