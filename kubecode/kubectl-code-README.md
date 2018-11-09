@@ -38,7 +38,7 @@ Secrets that show up as environment variables inside pods need to be set using k
 For the development namespace we have
 ```bash
 # Development - note the NA value for the s3 credentials (not needed for development)
-kubectl config use-context development
+kubectl config use-context minikube
 kubectl  create secret generic db-password --from-literal=db-password=superSecret
 kubectl create secret generic s3-secrets --from-literal=s3bucket=NA --from-literal=s3accesskey=NA --from-literal=s3secretkey=NA
 ```
@@ -90,11 +90,11 @@ Finally we create the Django deployment ([same deployment file](deployment_djang
 ```bash
 # Development
 kubectl config use-context minikube
-kubectl --namespace development apply deployment_django.yaml
+kubectl --namespace development apply -f deployment_django.yaml
 
 # Production
 kubectl config use-context aws
-kubectl --namespace production apply deployment_django.yaml
+kubectl --namespace production apply -f deployment_django.yaml
 ```
 K8s will apply the appropriate configmap/secret environment variables to correctly deploy the django application for the given environment.
 
