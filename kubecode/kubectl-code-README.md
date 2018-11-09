@@ -147,5 +147,5 @@ kubectl rollout history deployment.v1.apps/django-deployment
 kubectl rollout history deployment.v1.apps/django-deployment --revision=2
 
 # Rollback to last revision
-kubectl rollout undo deployments  deployment.v1.apps/django-deployment
+kubectl rollout undo deployments django-deployment
 ```
