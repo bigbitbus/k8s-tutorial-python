@@ -24,8 +24,8 @@ kubectl apply -f ../kubecode/deployment_django.yaml
 #Run tests here
 
 # Optional - push your docker image to the registry, not needed for minikube
-docker login
-docker push kubernetes101/django_image:$NEW_IMAGE_HASH
+# docker login
+# docker push kubernetes101/django_image:$NEW_IMAGE_HASH
 
 # Optional - push your code to git
 # git push
