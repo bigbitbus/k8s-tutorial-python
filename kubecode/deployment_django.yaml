@@ -18,7 +18,7 @@ spec:
       containers:
       - name: django
         # Notice the tag is also included in the image
-        image: kubernetes101/django_image:06efe4e
+        image: kubernetes101/django_image:c9b3c25
         ports:
         - containerPort: 8000
         # Minimum and maximum resources allocated to the container.
