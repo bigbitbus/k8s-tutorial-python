@@ -14,7 +14,7 @@ NEW_IMAGE_HASH=`git rev-parse --short HEAD`
 docker build --tag kubernetes101/django_image:$NEW_IMAGE_HASH .
 
 # Replace old image by new image
-sed -i -e "s/kubernetes101\/django_image.*/$NEW_IMAGE_HASH/g" ../kubecode/deployment_django.yaml
+sed -i -e "s/kubernetes101\/django_image.*/kubernetes101\/django_image:$NEW_IMAGE_HASH/g" ../kubecode/deployment_django.yaml
 
 
 # Apply (current context, namespace) in development/test
