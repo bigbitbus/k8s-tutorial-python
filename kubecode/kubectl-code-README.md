@@ -16,7 +16,7 @@ Point your local host [docker client installation](https://docs.docker.com/insta
 eval $(minikube docker-env)
 ``` 
 
-After you make any changes to the [application code](django-poll-project) you will need to create a new container and push it to the docker registry if you want to use the image on a remote k8s cluster (such as the AWS EKS cluster we [setup](aws-k8s-pgdb-with-terraform/aws-kubernetes/aws-k8s-README.md)). More details on creating and pushing local docker images in a related README: [poll-app-README.md](django-poll-project/poll-app-README.md).
+After you make any changes to the [application code](/django-poll-project) you will need to create a new container and push it to the docker registry if you want to use the image on a remote k8s cluster (such as the AWS EKS cluster we [setup](/aws-k8s-pgdb-with-terraform/aws-kubernetes/aws-k8s-README.md)). More details on creating and pushing local docker images in a related README: [poll-app-README.md](/django-poll-project/poll-app-README.md).
 
 ## Default namespaces
 We want a namespace called "development" in our minikube cluster and a namespace called "production" in our aws eks cluster to be the default namespaces.
@@ -53,7 +53,7 @@ kubectl create secret generic db-password --from-literal=db-password=substitute_
 We can use the same secret names (db-poassword, s3-secrets) since they are being inserted into different namespaces (virtual k8s clusters).
 
 ## Configmaps for environment variables
-We use [development](kubecode/configmap_development.yaml) and [production](kubecode/configmap_production) configmaps; their keys become environment variables inside of pods.
+We use [development](configmap_development.yaml) and [production](configmap_production) configmaps; their keys become environment variables inside of pods.
 
 ```bash
 kubectl apply -f configmap_development.yaml
@@ -61,4 +61,3 @@ kubectl apply -f configmap_development.yaml
 kubectl apply -f configmap_production.yaml
 ```
 Note that if the correct kubectl context is set then we don't have to specify the namespace since the namespace key is stored in the metadata key inside these yaml files.
- 
