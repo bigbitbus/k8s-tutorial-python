@@ -109,12 +109,18 @@ minikube service -n development django-service --url
 # Production
 kubectl config use-context aws
 kubectl apply expose_service_django.yaml
-# AWS will create a loadbalancer (at an extra cost) to expose the service. Please wait for ~5 minutes before the AWS loadbalancer becomes available.
+# AWS will create a load-balancer (at an extra cost) to expose the service. Please wait for ~5 minutes before the AWS loadbalancer becomes available.
 
 ```
 
 ## Useful commands
 ```bash
+# Get nodes in the k8s cluster
+kubectl get nodes
+
+# Get details of a node
+kubectl get nodes <node-name> -o yaml
+
 # Get pods for the current namespace
 kubectl get pods
 
@@ -123,6 +129,9 @@ kubectl --namespace production get pods
 
 # Get logs for a pod
 kubectl logs <pod-name>
+
+# Get details for a pod
+kubectl get pods <pod-name> -o yaml
 
 # Log into a container
 kubectl exec -it <pod-name> bash
@@ -134,5 +143,9 @@ kubectl scale  --replicas=5 deployment/django-deployment
 kubectl rollout history deployment.v1.apps/django-deployment
 
 # Go to a specific revision
+
 kubectl rollout history deployment.v1.apps/django-deployment --revision=2
+
+# Rollback to last revision
+kubectl rollout undo deployments  deployment.v1.apps/django-deployment
 ```
