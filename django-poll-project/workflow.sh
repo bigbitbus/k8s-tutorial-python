@@ -29,3 +29,4 @@ kubectl apply -f ../kubecode/deployment_django.yaml
 # Optional - push your code to git
 # git push
 
+read -p "Press any key to continue... " -n1 -s
