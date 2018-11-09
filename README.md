@@ -3,7 +3,7 @@ Welcome to the [__Kubernetes 101 for Python Programmers__](https://2018.pycon.ca
 
 The application can be launched on your local laptop in development mode using a [Minikube](https://kubernetes.io/docs/setup/minikube/) k8s cluster. We have also included [Terraform](https://www.terraform.io/) scripts, [here](aws-k8s-pgdb-with-terraform/aws-kubernetes), that can help you spin up a k8s cluster in [Amazon cloud EKS](https://aws.amazon.com/eks/) to highlight a few integration points between your k8s resident application and the underlying cloud provider.
 
-You can download the [slides]/tutorial/BigBitBus.Kubernetes-101-for-Python-Programmers.pdf) accompanying the code. We will add the link to the accompanying tutorial video when it becomes available.
+You can download the [slides](/tutorial/BigBitBus.Kubernetes-101-for-Python-Programmers.pdf) accompanying the code. We will add the link to the accompanying tutorial video when it becomes available.
 
 ## Your Kubernetes Learning Plan
 
