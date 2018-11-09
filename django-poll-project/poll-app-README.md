@@ -27,8 +27,8 @@ $ eval $(minikube docker-env)
 ```
 
 You should check that docker commands now run on the minikube VM:
-```bash
 
+```bash
 docker ps 
 # You should see many docker containers running k8s internals - dns, etcd, controllers etc.
 ```
@@ -56,8 +56,8 @@ docker push kubernetes101/django_image:`git rev-parse --short HEAD`
 ```
 Note the repository,name and tag of the container (kubernetes101/django_image:`git rev-parse --short HEAD`) - you will need this when telling k8s which container to run.
 
-The [workflow.sh](django-poll-project/workflow.sh) implements a simple workflow of updating the code, building a new container image, and updating the deployment (the steps discussed above). Read through the comments in the script and try running it in your development environment.
-```
+The [workflow.sh](/django-poll-project/workflow.sh) implements a simple workflow of updating the code, building a new container image, and updating the deployment (the steps discussed above). Read through the comments in the script and try running it in your development environment.
+```bash
 ./workflow.sh
 ``` 
 
@@ -66,7 +66,7 @@ The [workflow.sh](django-poll-project/workflow.sh) implements a simple workflow 
 Static files are collected and stored in an S3 bucket in production, as discussed [here](https://www.caktusgroup.com/blog/2014/11/10/Using-Amazon-S3-to-store-your-Django-sites-static-and-media-files/).
 
 ## Running Django Management Commands
-Log into a running pod to run manage.py comands. For example:
+Log into a running pod to run manage.py commands. For example:
 ```bash
 kubectl get pods
 kubectl  exec django-deployment-xxxxxx bash
