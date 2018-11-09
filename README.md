@@ -3,22 +3,22 @@ Welcome to the [__Kubernetes 101 for Python Programmers__](https://2018.pycon.ca
 
 The application can be launched on your local laptop in development mode using a [Minikube](https://kubernetes.io/docs/setup/minikube/) k8s cluster. We have also included [Terraform](https://www.terraform.io/) scripts, [here](aws-k8s-pgdb-with-terraform/aws-kubernetes), that can help you spin up a k8s cluster in [Amazon cloud EKS](https://aws.amazon.com/eks/) to highlight a few integration points between your k8s resident application and the underlying cloud provider.
 
-You can download the [slides]/tutorial/BigBitBus.Kubernetes-101-for-Python-Programmers) accompanying the code. We will add the link to the accompanying tutorial video when it becomes available.
+You can download the [slides]/tutorial/BigBitBus.Kubernetes-101-for-Python-Programmers.pdf) accompanying the code. We will add the link to the accompanying tutorial video when it becomes available.
 
 ## Your Kubernetes Learning Plan
 
-1. Browse through the [slides](/tutorial/BigBitBus.Kubernetes-101-for-Python-Programmers) in this tutorial to get a condensed start to the concepts around Docker and k8s, and understanding how a Python/Django application can live inside k8s.
+1. Browse through the [slides](/tutorial/BigBitBus.Kubernetes-101-for-Python-Programmers.pdf) in this tutorial to get a condensed start to the concepts around Docker and k8s, and understanding how a Python/Django application can live inside k8s.
 2. If you want to try out k8s without installing anything or creating a cloud provider account, spend time on the official [Kubernetes tutorials](https://kubernetes.io/docs/tutorials/); these include interactive tools to let you actually play with a k8s cluster without spinning one up on your own machine/cloud account:
     *   [Create a k8s cluster](https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/cluster-interactive/)
     *  [Deploy a nodejs app](https://kubernetes.io/docs/tutorials/kubernetes-basics/deploy-app/deploy-interactive/)
     *  [Other basic k8s operations such as scaling, rolling versions etc.](https://kubernetes.io/docs/tutorials/kubernetes-basics/)
 3. If you are ready to take the next step - and commit to installing a k8s-all-in-one VM on your PC, head over to the [Minikube installation page](https://kubernetes.io/docs/tasks/tools/install-minikube/) to install the single-node k8s instance on your PC. This is useful for development work. You can then try to deploy the django application [included](/django-poll-project) in this tutorial on your local PC k8s cluster.
 4. The next step is moving toward Kubernetes for production. We strongly recommend creating a cloud-provider-managed k8s cluster unless you have a strict requirement for an in-house production-grade [do-it-yourself k8s cluster](https://kubernetes.io/docs/setup/scratch/).  
-5. We have included [Terraform scripts](/aws-k8s-pgdb-with-terraform/aws-kubernetes) to create a [Amazon cloud EKS](https://aws.amazon.com/eks/) cluster. You will need AWS credentials and a credit card - __warning__: running a k8s cluster is not cheap (see our [slides](/tutorial/BigBitBus.Kubernetes-101-for-Python-Programmers) for an example).
+5. We have included [Terraform scripts](/aws-k8s-pgdb-with-terraform/aws-kubernetes) to create a [Amazon cloud EKS](https://aws.amazon.com/eks/) cluster. You will need AWS credentials and a credit card - __warning__: running a k8s cluster is not cheap (see our [slides](/tutorial/BigBitBus.Kubernetes-101-for-Python-Programmers.pdf) for an example).
 
 # What is Where?
 Here are links to key resources in this repository
-* [Slides](/tutorial/BigBitBus.Kubernetes-101-for-Python-Programmers) for the tutorial
+* [Slides](/tutorial/BigBitBus.Kubernetes-101-for-Python-Programmers.pdf) for the tutorial
 * [Minikube installation instructions](https://kubernetes.io/docs/tasks/tools/install-minikube/) 
 * [Docker setup and commands](/django-poll-project/poll-app-README.md) and the [Dockerfile](/django-poll-project/Dockerfile) to create the django application container image from a standard base python image. 
 * [Amazon AWS EKS k8s setup](/aws-k8s-pgdb-with-terraform/aws-kubernetes/aws-k8s-README.md) - you will need an AWS account (credit card required).
