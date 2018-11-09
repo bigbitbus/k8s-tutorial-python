@@ -1,11 +1,11 @@
 # Kubernetes 101 for Python Programmers
-Welcome to the [__Kubernetes 101 for Python Programmers__](https://2018.pycon.ca/talks/talk-PC-51523/) tutorial. This repository contains a [sample Django application](django-poll-project) that can be deployed into a Kubernetes (abbreviated k8s) cluster using the included k8s spec files. 
+Welcome to the [__Kubernetes 101 for Python Programmers__](https://2018.pycon.ca/talks/talk-PC-51523/) tutorial. This repository contains a [sample Django application](django-poll-project) that can be deployed into a Kubernetes (abbreviated k8s) cluster using the included k8s spec [files](kubecode).
 
-The application can be launched on your local laptop in development mode using a [Minikube](https://kubernetes.io/docs/setup/minikube/) k8s cluster. We have also included [Terraform](https://www.terraform.io/) scripts that can help you spin up a k8s cluster in [Amazon cloud EKS](https://aws.amazon.com/eks/) to highlight a few integration points between your k8s resident application and the underlying cloud provider. 
+The application can be launched on your local laptop in development mode using a [Minikube](https://kubernetes.io/docs/setup/minikube/) k8s cluster. We have also included [Terraform](https://www.terraform.io/) scripts, [here](aws-k8s-pgdb-with-terraform/aws-kubernetes), that can help you spin up a k8s cluster in [Amazon cloud EKS](https://aws.amazon.com/eks/) to highlight a few integration points between your k8s resident application and the underlying cloud provider.
 
-You can also download the [slides](tutorial/kubernetes101forPython.pdf) accompanying the code. We will add the link to the accompanying tutorial video when it becomes available. 
+You can download the [slides](tutorial/kubernetes101forPython.pdf) accompanying the code. We will add the link to the accompanying tutorial video when it becomes available.
 
-# Your Kubernetes Learning Plan 
+## Your Kubernetes Learning Plan
 
 1. Browse through the [slides](tutorial/kubernetes101forPython.pdf) in this tutorial to get a condensed start to the concepts around Docker and k8s, and understanding how a Python/Django application can live inside k8s.
 2. If you want to try out k8s without installing anything or creating a cloud provider account, spend time on the official [Kubernetes tutorials](https://kubernetes.io/docs/tutorials/); these include interactive tools to let you actually play with a k8s cluster without spinning one up on your own machine/cloud account:
