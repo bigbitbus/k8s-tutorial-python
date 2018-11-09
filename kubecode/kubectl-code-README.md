@@ -50,7 +50,7 @@ kubectl config use-context production
 kubectl create secret generic s3-secrets --from-literal=s3bucket=bucket_name --from-literal=s3accesskey=substitute_access_key --from-literal=s3secretkey=substitute_secret_key
 kubectl create secret generic db-password --from-literal=db-password=substitute_password
 ```
-We can use the same secret names (db-poassword, s3-secrets) since they are being inserted into different namespaces (virtual k8s clusters).
+We can use the same secret names (db-password, s3-secrets) since they are being inserted into different namespaces (virtual k8s clusters).
 
 ## Configmaps for environment variables
 We use [development](configmap_development.yaml) and [production](configmap_production) configmaps; their keys become environment variables inside of pods.
@@ -60,4 +60,79 @@ kubectl apply -f configmap_development.yaml
 
 kubectl apply -f configmap_production.yaml
 ```
+
 Note that if the correct kubectl context is set then we don't have to specify the namespace since the namespace key is stored in the metadata key inside these yaml files.
+
+## Postgres Database
+Postgres runs as a container in the development namespace and as a external service (AWS RDS database) in the production namespace. 
+
+### Development
+For development we run the postgres deployment and expose the service via a cluster-ip -- dns mapping as in [service_db_deployment.yaml](service_db_deployment.yaml).
+```bash
+# (after setting up the environment variables via secrets and configmap above)
+kubectl config use-context minikube
+kubectl apply -f deployment_postgres_development.yaml
+kubectl apply -f service_db_development.yaml
+kubectl  get svc
+```
+The "pghost" hostname defined by the service can be used in the application code (Django's [setup.py](/django-poll-project/kube101/kube101/settings.py) in our example).
+
+### Production
+For production we create an external service dns record mapping to "pghost" as in [ext_service_db_production.yaml](/kubecode/ext_service_db_production.yaml).
+```bash
+kubectl config use-context aws
+kubectl apply -f ext_service_db_production.yaml
+kubectl  get svc
+```
+
+## Django Deployment
+Finally we create the Django deployment ([same deployment file](deployment_django.yaml) for both development and production)
+```bash
+# Development
+kubectl config use-context minikube
+kubectl --namespace development apply deployment_django.yaml
+
+# Production
+kubectl config use-context aws
+kubectl --namespace production apply deployment_django.yaml
+```
+K8s will apply the appropriate configmap/secret environment variables to correctly deploy the django application for the given environment.
+
+Finally, we need to expose the django service
+```bash
+# Development
+kubectl config use-context minikube
+kubectl --namespace development apply expose_service_django.yaml
+# use the url obtained below to get access to the django server
+minikube service -n development django-service --url
+
+# Production
+kubectl config use-context aws
+kubectl apply expose_service_django.yaml
+# AWS will create a loadbalancer (at an extra cost) to expose the service. Please wait for ~5 minutes before the AWS loadbalancer becomes available.
+
+```
+
+## Useful commands
+```bash
+# Get pods for the current namespace
+kubectl get pods
+
+# Get pods for a specified namespace
+kubectl --namespace production get pods
+
+# Get logs for a pod
+kubectl logs <pod-name>
+
+# Log into a container
+kubectl exec -it <pod-name> bash
+
+# Scale a deployment
+kubectl scale  --replicas=5 deployment/django-deployment
+
+# rollout history
+kubectl rollout history deployment.v1.apps/django-deployment
+
+# Go to a specific revision
+kubectl rollout history deployment.v1.apps/django-deployment --revision=2
+```
