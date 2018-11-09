@@ -3,7 +3,9 @@ OLD_IMAGE_HASH=`git rev-parse --short HEAD`
 echo "Original git head revision at: "
 git rev-parse --short HEAD
 
-# Commit changes
+# Commit changes - FIX THIS - you probably want
+# to make the commit manually and put a proper
+# commit message.
 git commit -a -m "Made a small change"
 echo "New git head revision at: "
 git rev-parse --short HEAD
@@ -20,7 +22,6 @@ sed -i -e "s/$OLD_IMAGE_HASH/$NEW_IMAGE_HASH/g" ../kubecode/deployment_django.ya
 kubectl apply -f ../kubecode/deployment_django.yaml
 
 #Run tests here
-
 
 # Optional - push your docker image to the registry, not needed for minikube
 docker login
