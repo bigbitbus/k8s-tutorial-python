@@ -5,6 +5,9 @@ The application can be launched on your local laptop in development mode using a
 
 You can download the [slides](/tutorial/BigBitBus.Kubernetes-101-for-Python-Programmers.pdf) accompanying the code.
 
+## [SCREENCAST LINK](https://join.me/kubernetes101) 
+If you cannot see the screen you can follow the presentation via the screencast.
+
 ## Your Kubernetes Learning Plan
 
 1. Browse through the [slides](/tutorial/BigBitBus.Kubernetes-101-for-Python-Programmers.pdf) in this tutorial to get a condensed start to the concepts around Docker and k8s, and understanding how a Python/Django application can live inside k8s.
