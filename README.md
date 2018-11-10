@@ -1,3 +1,7 @@
+## [SCREENCAST LINK](https://join.me/kubernetes101) 
+If you cannot see the screen you can follow the presentation via the screencast.
+
+
 # Kubernetes 101 for Python Programmers
 Welcome to the [__Kubernetes 101 for Python Programmers__](https://2018.pycon.ca/talks/talk-PC-51523/) tutorial. This repository contains a [sample Django application](/django-poll-project) that can be deployed into a Kubernetes (abbreviated k8s) cluster using the included k8s spec [files](/kubecode).
 
@@ -5,8 +9,6 @@ The application can be launched on your local laptop in development mode using a
 
 You can download the [slides](/tutorial/BigBitBus.Kubernetes-101-for-Python-Programmers.pdf) accompanying the code.
 
-## [SCREENCAST LINK](https://join.me/kubernetes101) 
-If you cannot see the screen you can follow the presentation via the screencast.
 
 ## Your Kubernetes Learning Plan
 
