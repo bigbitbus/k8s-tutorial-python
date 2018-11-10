@@ -3,7 +3,7 @@ Welcome to the [__Kubernetes 101 for Python Programmers__](https://2018.pycon.ca
 
 The application can be launched on your local laptop in development mode using a [Minikube](https://kubernetes.io/docs/setup/minikube/) k8s cluster. We have also included [Terraform](https://www.terraform.io/) scripts, [here](aws-k8s-pgdb-with-terraform/aws-kubernetes), that can help you spin up a k8s cluster in [Amazon cloud EKS](https://aws.amazon.com/eks/) to highlight a few integration points between your k8s resident application and the underlying cloud provider.
 
-You can download the [slides](/tutorial/BigBitBus.Kubernetes-101-for-Python-Programmers.pdf) accompanying the code. We will add the link to the accompanying tutorial video when it becomes available.
+You can download the [slides](/tutorial/BigBitBus.Kubernetes-101-for-Python-Programmers.pdf) accompanying the code.
 
 ## Your Kubernetes Learning Plan
 
@@ -24,7 +24,7 @@ Here are links to key resources in this repository
 * [Amazon AWS EKS k8s setup](/aws-k8s-pgdb-with-terraform/aws-kubernetes/aws-k8s-README.md) - you will need an AWS account (credit card required).
 * [Using the k8s cluster](/kubecode/kubectl-code-README.md) This is the meat of the tutorial - things to do with the k8s cluster.
 * [Amazon AWS RDS setup](/aws-k8s-pgdb-with-terraform/aws-kubernetes/aws-k8s-README.md)  to create a simple postgres database instance - you will need an AWS account (credit card required). We separated the terraform scripts for EKS and RDS setup because you probably don't want to create and tear down your production database and EKS cluster at the same time!
-* [Sample django poll application](/django-poll-project), the [settings.py](/django-poll-project/kube101/kube101/settings.py) may be of particular interest.
+* [Sample django poll application](/django-poll-project), the [settings.py](/django-poll-project/kube101/kube101/settings.py) may be of particular interest. The [README](/django-poll-project/poll-app-README.md) describes the docker commands to package the application into a container. The [workflow.sh](/django-poll-project/workflow.sh) script will give you a starting point of how to integrate k8s build/test/deploy into your CI system.
 
 
 
