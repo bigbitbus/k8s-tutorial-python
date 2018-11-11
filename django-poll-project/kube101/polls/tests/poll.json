@@ -1,0 +1,33 @@
+[
+  {
+    "model": "polls.Poll",
+    "pk": 1,
+    "fields": {
+      "question": "Do you like beer?"
+    }
+  },
+  {
+    "model": "polls.Choice",
+    "pk": 1,
+    "fields": {
+      "poll_id": 1,
+      "choice_text": "Yes, I love beer!"
+    }
+  },
+  {
+    "model": "polls.Choice",
+    "pk": 2,
+    "fields": {
+      "poll_id": 1,
+      "choice_text": "Yes!"
+    }
+  },
+  {
+    "model": "polls.Choice",
+    "pk": 3,
+    "fields": {
+      "poll_id": 1,
+      "choice_text": "Also yes"
+    }
+  }
+]
