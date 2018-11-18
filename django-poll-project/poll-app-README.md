@@ -7,6 +7,18 @@ The simple [Django poll app](https://docs.djangoproject.com/en/2.1/intro/tutoria
 
 In order to effectively use Docker with k8s you will need a Docker registry account. A docker registry is a remote file server that contains docker images stored in your repository. For this tutorial we are using the free [DockerHub account](https://hub.docker.com/), which only allows public repositories. This means that anyone else can search and use the docker images you have uploaded. This is great for learning k8s best practices of __never__ baking credentials into your images!
 
+__Minikube + Docker Gotcha__
+
+When you use Minikube on your local laptop remember the docker daemon that you want to interact with (e.g. for building images) runs within that minikube VM.
+
+Make sure your laptop host docker client points to the docker daemon running _inside_ the minikube VM. Run this command on the host
+
+```
+minikube docker-env
+```
+
+Then read the last line of the output (differs depending on your OS platform) and execute the suggested command. Now you have your docker client pointing to the docker runtime inside your minikube VM.
+
 ### Setup
 
 We assume you have a functional local minikube [installation](README.md) for development. So the Docker runtime is running within the minikube VM. You can point your host Docker client installation to control the Docker runtime inside the VM (instead of controlling the Docker runtime on the host machine itself).
