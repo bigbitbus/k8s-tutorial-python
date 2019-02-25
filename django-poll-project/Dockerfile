@@ -8,12 +8,14 @@ LABEL email="contact@bigbitbus.com"
 # Environment variable - make stderr/stdout unbuffered
 ENV PYTHONUNBUFFERED 1
 
-# Copy code into container
-COPY . .
-
+# Handle requirements install first - this speeds up docker image creation
+COPY requirements.txt .
 # Install python requirements
 RUN pip install -r requirements.txt
+RUN rm requirements.txt
 
+#Copy the Django code of the pollproject
+COPY . . 
 # EXPOSE port 8000 to allow communication to/from server
 EXPOSE 8000
 
