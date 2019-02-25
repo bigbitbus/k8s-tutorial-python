@@ -1,0 +1,41 @@
+pipeline {
+    agent any
+   parameters {
+            string(
+                name: 'REPLICAS',
+                defaultValue:"2",
+                description: "Number of pods running the application server")
+   }
+    stages {
+        stage('Collecting current status') {
+            steps {
+                sh 'echo "Current replica status"'
+                sh '''
+                    export PATH=$HOME/software:$PATH
+                    kubectl config use-context demo-prod
+                    kubectl get pods --selector=app=django
+                   '''
+            }
+        }
+        stage('Scale app (click to input # replicas') {
+            steps {
+                sh "echo REPLICAS: ${params.REPLICAS}"
+                sh """#!/usr/bin/env bash
+                    export PATH=$HOME/software:$PATH
+                    kubectl config use-context demo-prod
+                    kubectl scale deployment.v1.apps/django-deployment --replicas=${params.REPLICAS}
+                   """
+            }
+        }
+        stage('Collecting new status') {
+            steps {
+                sh 'echo "Current replica status"'
+                sh '''
+                    export PATH=$HOME/software:$PATH
+                    kubectl config use-context demo-prod
+                    kubectl get pods --selector=app=django
+                   '''
+            }
+      }
+    }
+}

@@ -3,7 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: postgres-config
-  namespace: development
+  namespace: demo-dev
 data:
   POSTGRES_DB: "kubetutorial101"
   POSTGRES_USER: "postgres"

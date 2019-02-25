@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: pghost
-  namespace: demo-dev
+  namespace: demo-prod
 spec:
   selector:
     app: postgres

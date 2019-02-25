@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+    stages {
+        stage('Roll back') {
+            steps {
+                sh 'echo "undo rollout"'
+                sh '''
+                    export PATH=$HOME/software:$PATH
+                    kubectl config use-context demo-prod
+                    echo "History BEFORE roll-back"
+                    kubectl rollout history deployment.v1.apps/django-deployment
+                    kubectl rollout undo deployment.v1.apps/django-deployment
+                    echo "History AFTER roll-back"
+                    kubectl rollout history deployment.v1.apps/django-deployment
+                   '''
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+    stages {
+        stage('Production promotion') {
+            steps {
+                sh 'echo "Deploy to the production K8s namespace..."'
+                sh '''
+                    export PATH=$HOME/software:$PATH
+                    kubectl config use-context demo-prod
+                    GITREV=`git rev-parse --short HEAD`
+                    echo "Deploying master branch ($GITREV) to production cluster."
+                    kubectl apply -f kubecode/deployment_django.yaml --record
+                   '''
+            }
+        }
+    }
+    post {
+        always {
+            cleanWs()
+        }
+    }
+}

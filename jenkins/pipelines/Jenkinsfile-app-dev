@@ -1,0 +1,52 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build Docker image') {
+            steps {
+                sh 'echo "Build and push docker image...:"'
+                sh '''#!/bin/bash
+                    GITREV=`git rev-parse --short HEAD`
+                    cat /opt/docker-hub-password.txt | docker login -u kubetotorial101 --password-stdin
+                    docker push kubetotorial101/pollproject:$GITREV
+
+                   '''
+            }
+        }
+        stage('dev environment deploy') {
+            steps {
+                sh 'echo "Deploy to the development K8s namespace..."'
+                sh '''
+                    export PATH=$HOME/software:$PATH
+                    kubectl config use-context demo-dev
+                    GITREV=`git rev-parse --short HEAD`
+                    git checkout development
+                    sed -i -e \"s/image:.*/image: kubetotorial101\\/pollproject:$GITREV/g\" kubecode/deployment_django.yaml
+                    kubectl apply -f kubecode/deployment_django.yaml --record
+                    sleep 15
+                    kubectl describe deploy django-deployment
+                    kubectl describe deploy django-deployment | grep "MinimumReplicasAvailable" | grep "True"
+                   '''
+            }
+        }
+        stage ('Unit testing') {
+            steps {
+                sh 'echo "Invoking and performing unit tests inside docker container"'
+            }
+        }
+        stage ('Developer sign-off') {
+            steps {
+                sh 'echo "Unit testing passed, so pushing changes into devevlopment branch"'
+                sh '''
+                  git commit -a -m "Unit tests passed, developer sign-off"
+                  git push origin development
+                  '''
+            }
+        }
+      }
+      post {
+        always {
+            cleanWs()
+        }
+      }
+}
+

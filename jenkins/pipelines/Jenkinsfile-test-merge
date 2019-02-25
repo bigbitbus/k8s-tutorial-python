@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+    stages {
+        stage('Create release candidate') {
+          steps {
+              sh 'echo "Creating release candidate branch from development."'
+              sh '''
+                  GITREV=`git rev-parse --short HEAD`
+                  git branch release-candidate-$GITREV
+                  echo "Release candidate git hash is $GITREV"
+                '''
+          }
+        }
+        stage('Integration and Acceptance tests') {
+            steps {
+                sh 'echo "Running integration and acceptance tests"'
+                sh 'echo "Running integration tests"'
+                sh 'echo "Running acceptance tests"'
+                sh 'echo "ALL tests passed"'
+            }
+        }
+        stage('QA sign-off') {
+            steps {
+                sh 'echo "Integration and Acceptance tests passed, so merging into master branch"'
+                sh '''
+                    GITREV=`git rev-parse --short HEAD`
+                    git fetch
+                    git checkout master
+                    git merge release-candidate-$GITREV
+                    git push origin master
+                   '''
+            }
+        }
+    }
+    post {
+        always {
+            cleanWs()
+        }
+    }
+}

@@ -18,6 +18,6 @@ resource "aws_db_instance" "default" {
   name                 = "kubernetes101db"
   username             = "${var.db_username}"
   password             = "${var.db_password}"
-  vpc_security_group_ids = ["sg-03dade87817c9c30f"] # aws_security_group_rule.kube-node-ingress-self
+  vpc_security_group_ids = ["sg-e87817c9c30f"] # aws_security_group_rule.kube-node-ingress-self
   db_subnet_group_name   = "${aws_db_subnet_group.dbsub.id}"
 }

@@ -18,14 +18,14 @@ spec:
       containers:
       - name: django
         # Notice the tag is also included in the image
-        image: kubernetes101/django_image:09f1419
+        image: kubetotorial101/pollproject:b832173
         ports:
         - containerPort: 8000
         # Minimum and maximum resources allocated to the container.
         resources:
           requests:
-            memory: "64Mi"
-            cpu: "200m"
+            memory: "32Mi"
+            cpu: "50m"
           limits:
             memory: "128Mi"
             cpu: "400m"
