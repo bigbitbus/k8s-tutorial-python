@@ -27,8 +27,7 @@ Here are links to key resources in this repository
 * [Using the k8s cluster](/kubecode/kubectl-code-README.md) This is the meat of the tutorial - things to do with the k8s cluster.
 * [Amazon AWS RDS setup](/aws-k8s-pgdb-with-terraform/aws-kubernetes/aws-k8s-README.md)  to create a simple postgres database instance - you will need an AWS account (credit card required). We separated the terraform scripts for EKS and RDS setup because you probably don't want to create and tear down your production database and EKS cluster at the same time!
 * [Sample django poll application](/django-poll-project), the [settings.py](/django-poll-project/kube101/kube101/settings.py) may be of particular interest. The [README](/django-poll-project/poll-app-README.md) describes the docker commands to package the application into a container. 
-* The [Jenkins pipeline files](/jenkins) contain shell scripts, executed in stages by Jenkins. This gives you ideas about how to use a CI/CD tool; see the [demo video](https://youtu.be/LRucFET42PI) to see these Jenkins pipelines in action.
-to automate your Kubernetes workflows.
+* The [Jenkins pipeline files](/jenkins) contain shell scripts, executed in stages by Jenkins. This gives you ideas about how to use a CI/CD tool with Kuberetes workflows; see the [demo video](https://youtu.be/LRucFET42PI) to see these Jenkins pipelines in action.
 
 
 
