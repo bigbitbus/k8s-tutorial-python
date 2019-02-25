@@ -18,7 +18,7 @@ spec:
       containers:
       - name: django
         # Notice the tag is also included in the image
-        image: kubetotorial101/pollproject:2b73f10
+        image: kubetotorial101/pollproject:0040583
         ports:
         - containerPort: 8000
         # Minimum and maximum resources allocated to the container.
