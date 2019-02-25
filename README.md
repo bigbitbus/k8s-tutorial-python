@@ -19,14 +19,15 @@ You can download the [slides](/tutorial/Kubernetes-101-for-Python-Programmers-Fe
 
 # What is Where?
 Here are links to key resources in this repository
-* [Slides](/tutorial/BigBitBus.Kubernetes-101-for-Python-Programmers.pdf) for the tutorial
+* [Slides](/tutorial/Kubernetes-101-for-Python-Programmers-Feb_2019.pdf) for the tutorial.
 * [Demo video](https://youtu.be/LRucFET42PI) - Jenkins + Kubernetes demo to help you visualize a devops/infrastructure-as-code approach to Python development and operations-as-code using Kubernetes. 
 * [Minikube installation instructions](https://kubernetes.io/docs/tasks/tools/install-minikube/) 
 * [Docker setup and commands](/django-poll-project/poll-app-README.md) and the [Dockerfile](/django-poll-project/Dockerfile) to create the django application container image from a standard base python image. 
 * [Amazon AWS EKS k8s setup](/aws-k8s-pgdb-with-terraform/aws-kubernetes/aws-k8s-README.md) - you will need an AWS account (credit card required).
 * [Using the k8s cluster](/kubecode/kubectl-code-README.md) This is the meat of the tutorial - things to do with the k8s cluster.
 * [Amazon AWS RDS setup](/aws-k8s-pgdb-with-terraform/aws-kubernetes/aws-k8s-README.md)  to create a simple postgres database instance - you will need an AWS account (credit card required). We separated the terraform scripts for EKS and RDS setup because you probably don't want to create and tear down your production database and EKS cluster at the same time!
-* [Sample django poll application](/django-poll-project), the [settings.py](/django-poll-project/kube101/kube101/settings.py) may be of particular interest. The [README](/django-poll-project/poll-app-README.md) describes the docker commands to package the application into a container. The [Jenkins pipeline files](/jenkins) contain shell scripts, executed in stages by Jenkins. This gives you ideas about how to use a CI/CD tool; see the [demo video](https://youtu.be/LRucFET42PI) to see these Jenkins pipelines in action.
+* [Sample django poll application](/django-poll-project), the [settings.py](/django-poll-project/kube101/kube101/settings.py) may be of particular interest. The [README](/django-poll-project/poll-app-README.md) describes the docker commands to package the application into a container. 
+* The [Jenkins pipeline files](/jenkins) contain shell scripts, executed in stages by Jenkins. This gives you ideas about how to use a CI/CD tool; see the [demo video](https://youtu.be/LRucFET42PI) to see these Jenkins pipelines in action.
 to automate your Kubernetes workflows.
 
 
