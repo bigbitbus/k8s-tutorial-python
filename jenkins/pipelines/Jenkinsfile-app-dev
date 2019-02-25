@@ -7,6 +7,7 @@ pipeline {
                 sh '''#!/bin/bash
                     GITREV=`git rev-parse --short HEAD`
                     cat /opt/docker-hub-password.txt | docker login -u kubetotorial101 --password-stdin
+                    docker build -t kubetotorial/pollproject:$GITREV django-poll-project/
                     docker push kubetotorial101/pollproject:$GITREV
 
                    '''
