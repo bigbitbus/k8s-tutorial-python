@@ -3,12 +3,12 @@ Welcome to the [__Kubernetes 101 for Python Programmers__](https://2018.pycon.ca
 
 The application can be launched on your local laptop in development mode using a [Minikube](https://kubernetes.io/docs/setup/minikube/) k8s cluster. We have also included [Terraform](https://www.terraform.io/) scripts, [here](aws-k8s-pgdb-with-terraform/aws-kubernetes), that can help you spin up a k8s cluster in [Amazon cloud EKS](https://aws.amazon.com/eks/) to highlight a few integration points between your k8s resident application and the underlying cloud provider.
 
-You can download the [slides](/tutorial/BigBitBus.Kubernetes-101-for-Python-Programmers.pdf) accompanying the code.
+You can download the [slides](/tutorial/BigBitBus.Kubernetes-101-for-Python-Programmers-Feb_2019.pdf) accompanying the code.
 
 
 ## Your Kubernetes Learning Plan
 
-1. Browse through the [slides](/tutorial/BigBitBus.Kubernetes-101-for-Python-Programmers.pdf) in this tutorial to get a condensed start to the concepts around Docker and k8s, and understanding how a Python/Django application can live inside k8s.
+1. Browse through the [slides](/tutorial/BigBitBus.Kubernetes-101-for-Python-Programmers-Feb_2019.pdf) in this tutorial to get a condensed start to the concepts around Docker and k8s, and understanding how a Python/Django application can live inside k8s.
 2. If you want to try out k8s without installing anything or creating a cloud provider account, spend time on the official [Kubernetes tutorials](https://kubernetes.io/docs/tutorials/); these include interactive tools to let you actually play with a k8s cluster without spinning one up on your own machine/cloud account:
     *   [Create a k8s cluster](https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/cluster-interactive/)
     *  [Deploy a nodejs app](https://kubernetes.io/docs/tutorials/kubernetes-basics/deploy-app/deploy-interactive/)
@@ -20,12 +20,14 @@ You can download the [slides](/tutorial/BigBitBus.Kubernetes-101-for-Python-Prog
 # What is Where?
 Here are links to key resources in this repository
 * [Slides](/tutorial/BigBitBus.Kubernetes-101-for-Python-Programmers.pdf) for the tutorial
+* [Demo video](https://youtu.be/LRucFET42PI) - Jenkins + Kubernetes for the stat of a devops/infrastructure-as-code approach to Python development using Kubernetes. 
 * [Minikube installation instructions](https://kubernetes.io/docs/tasks/tools/install-minikube/) 
 * [Docker setup and commands](/django-poll-project/poll-app-README.md) and the [Dockerfile](/django-poll-project/Dockerfile) to create the django application container image from a standard base python image. 
 * [Amazon AWS EKS k8s setup](/aws-k8s-pgdb-with-terraform/aws-kubernetes/aws-k8s-README.md) - you will need an AWS account (credit card required).
 * [Using the k8s cluster](/kubecode/kubectl-code-README.md) This is the meat of the tutorial - things to do with the k8s cluster.
 * [Amazon AWS RDS setup](/aws-k8s-pgdb-with-terraform/aws-kubernetes/aws-k8s-README.md)  to create a simple postgres database instance - you will need an AWS account (credit card required). We separated the terraform scripts for EKS and RDS setup because you probably don't want to create and tear down your production database and EKS cluster at the same time!
-* [Sample django poll application](/django-poll-project), the [settings.py](/django-poll-project/kube101/kube101/settings.py) may be of particular interest. The [README](/django-poll-project/poll-app-README.md) describes the docker commands to package the application into a container. The [workflow.sh](/django-poll-project/workflow.sh) script will give you a starting point of how to integrate k8s build/test/deploy into your CI system.
+* [Sample django poll application](/django-poll-project), the [settings.py](/django-poll-project/kube101/kube101/settings.py) may be of particular interest. The [README](/django-poll-project/poll-app-README.md) describes the docker commands to package the application into a container. The [Jenkins pipeline files](/jenkins) contain shell scripts, executed in stages by Jenkins. This gives you ideas about how to use a CI/CD tool; see the [demo video](https://youtu.be/LRucFET42PI) to see these Jenkins pipelines in action.
+to automate your Kubernetes workflows.
 
 
 
