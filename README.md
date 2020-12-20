@@ -1,3 +1,5 @@
+**Although most of the content in this repository is still valid, it is now superseded by the [BigBitBus Kubernetes Automation Toolkit](https://github.com/BigBitBusInc/kubernetes-automation-toolkit). We encourage you to visit that github project for the latest code changes and documentation.**
+
 # Kubernetes 101 for Python Programmers
 Welcome to the [__Kubernetes 101 for Python Programmers__](https://2018.pycon.ca/talks/talk-PC-51523/) tutorial. This repository contains a [sample Django application](/django-poll-project) that can be deployed into a Kubernetes (abbreviated k8s) cluster using the included k8s spec [files](/kubecode).
 
